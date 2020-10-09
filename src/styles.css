@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~bootstrap/dist/css/bootstrap.min.css";
 
 html {
   position: relative;
@@ -7,11 +7,14 @@ html {
 }
 
 body {
-    padding-top: 4.5rem;
-    padding-bottom: 4.5rem;
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
 }
 
-.dropdown-menu { right: 0; left: auto; }
+.dropdown-menu {
+  right: 0;
+  left: auto;
+}
 
 .scrollable-menu {
   height: auto;
@@ -20,6 +23,13 @@ body {
   overflow-x: hidden;
 }
 
+.user-menu {
+  height: auto;
+  max-height: 400px;
+  width: 50px;
+  text-align: right;
+}
+
 .cursor:hover {
-    cursor: pointer;
+  cursor: pointer;
 }

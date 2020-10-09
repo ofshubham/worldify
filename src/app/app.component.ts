@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   searchContent: string = "";
   activeUrlIndex: Number;
   recentCountries = [];
+  userDetails = null;
 
   isAuthenticated() {
     this.spotifyService.isAuthenticated();
@@ -29,6 +30,18 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.onPageChange();
+    this.spotifyService.getUserInfo().subscribe(
+      (res) => {
+        this.userDetails = res;
+        console.log(this.userDetails.display_name);
+      },
+      (err) => {
+        // if (err.status === 401) {
+        //   //this.spotifyService.retrieveToken(window.location.origin);
+        // }
+        console.log(err.msg);
+      }
+    );
     const code = localStorage.getItem("country") || "FR";
     const selectedCountry = countryList.find(
       (country) => country.code === code
@@ -88,5 +101,10 @@ export class AppComponent implements OnInit {
     arr.splice(fromIndex, 1);
     arr.splice(toIndex, 0, element);
     return arr;
+  }
+
+  logout() {
+    this.spotifyService.logout();
+    location.reload();
   }
 }
